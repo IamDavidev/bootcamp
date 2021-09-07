@@ -1,11 +1,11 @@
 import "./App.css";
-import Acount from "./components/Acount";
+import RenderJS from "./components/Render";
 const App = () => {
   return (
     <div className="App">
       <div className="App-header">
         <h1> FullStack Bootcamp </h1>
-        <Acount />
+        <RenderJS />
       </div>
     </div>
   );
