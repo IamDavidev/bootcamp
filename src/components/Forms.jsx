@@ -1,15 +1,15 @@
+import React, { useState } from "react";
 const Forms = (props) => {
-  console.log(props);
+  // const [note, setNote] = useState();
   const { id, color, date, conter } = props;
   return (
     <div className="Forms__cotent">
       <li style={{ color: color }}>
-        <p>{conter}</p>
-        <small>
-          <time>{date}</time>
-        </small>
-        <br />
-        <strong> ... id : {id}</strong>
+        <p>
+          <strong>{id}:</strong>
+          <small>{conter}</small>
+          <time>{date}___</time>
+        </p>
       </li>
     </div>
   );

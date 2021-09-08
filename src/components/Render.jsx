@@ -56,41 +56,49 @@
 export default RenderJS;
 */
 
-//= forms 
-import Forms from './Forms'
-const RenderJS = ()=>{
-  const notas = [
-    {
-      id: 1,
-      conter: "html is easy",
-      date: "109-28-82",
-      state: true,
-      color: "blue",
-    },
-    {
-      id: 2,
-      conter: "browser is JavaScript",
-      date: "928-89-78",
-      state: true,
-    },
-    {
-      id: 3,
-      conter: "vue is beautiful and React to",
-      date: "13-849-89",
-      state: false,
-      color: "red",
-    },
-  ];
-  return (  
-      <div className="Render__form">
-        {
-          notas.map((note)=>{
-             return <Forms {...note} key={note.id} />
+//= forms
+import { useState } from "react";
+import Forms from "./Forms";
+const RenderJS = (props) => {
+  //= useState
+  const [notes, setNotes] = useState(props.notes);
+  const [newNote, setNewNote] = useState("");
 
-          })
-        }
+  //= add new note 
+  const handleChange = (evt) => {
+    const note = evt.target.value;
+    setNewNote(note);
+  };
+  const handleClick = (evt) => {
+    evt.preventDefault();
+    const addNewNote = {
+      id:notes.length +  1 ,
+      conter: newNote,
+      date:new Date().toISOString(),
+      import:true,
+      color:"cyan"
+
+    }
+    console.log(addNewNote)
+  };
+  return (
+    <div className="Render__form">
+      <div className="Form__new__note">
+        <form action="sublime text ++ carnage">
+          <input type="text" onChange={handleChange} value={newNote}  placeholder={'add new note'}/>
+          <button onClick={handleClick}>Add Note </button>
+        </form>
       </div>
-  )
-}
+      <div className="Render__">
+      <ul>
+        {notes.map((note) => {
+          return <Forms {...note} key={note.id} />;
+        })}
+      </ul>
+
+      </div>
+    </div>
+  );
+};
 
 export default RenderJS;
