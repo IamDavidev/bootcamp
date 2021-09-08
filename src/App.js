@@ -7,7 +7,7 @@ const App = () => {
       id: 1,
       conter: "html is easy",
       date: "109-28-82",
-      state: true,
+      state: false,
       color: "blue",
     },
     {

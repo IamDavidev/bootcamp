@@ -63,39 +63,57 @@ const RenderJS = (props) => {
   //= useState
   const [notes, setNotes] = useState(props.notes);
   const [newNote, setNewNote] = useState("");
-
-  //= add new note 
+  const [stateNote, setStateNote] = useState(false);
+  //= add new note
   const handleChange = (evt) => {
-    const note = evt.target.value;
-    setNewNote(note);
+    setNewNote(evt.target.value);
   };
-  const handleClick = (evt) => {
+  const handleSubmit = (evt) => {
     evt.preventDefault();
     const addNewNote = {
-      id:notes.length +  1 ,
-      conter: newNote,
-      date:new Date().toISOString(),
-      import:true,
-      color:"cyan"
-
-    }
-    console.log(addNewNote)
+      id: notes.length + 1,
+      conter: newNote === "" ? "nota nueva sin contenido" : newNote,
+      date: new Date().toISOString(),
+      state: true,
+      color: "cyan",
+    };
+    // setNotes(notes.concat(addNewNote));
+    setNotes([...notes, addNewNote]);
+    setNewNote("");
   };
+  const handleState = (evt) => {
+    console.log(evt);
+    setStateNote(() => !stateNote);
+  };
+
   return (
     <div className="Render__form">
       <div className="Form__new__note">
-        <form action="sublime text ++ carnage">
-          <input type="text" onChange={handleChange} value={newNote}  placeholder={'add new note'}/>
-          <button onClick={handleClick}>Add Note </button>
+        <form action="sublime text ++ carnage" onClick={handleSubmit}>
+          <input
+            type="text"
+            onChange={handleChange}
+            value={newNote}
+            placeholder={"add new note"}
+            aria-required={true}
+          />
+          <button>Add Note </button>
         </form>
       </div>
       <div className="Render__">
-      <ul>
-        {notes.map((note) => {
-          return <Forms {...note} key={note.id} />;
-        })}
-      </ul>
-
+        <button onClick={handleState}>
+          {stateNote ? "importants" : "All"}
+        </button>
+        <ul>
+          {notes
+            .filter((note) => {
+              if (stateNote === true) return true;
+              return note.state === true;
+            })
+            .map((note) => {
+              return <Forms {...note} key={note.id} />;
+            })}
+        </ul>
       </div>
     </div>
   );
