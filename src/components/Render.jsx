@@ -1,4 +1,4 @@
-const RenderJS = () => {
+/*const RenderJS = () => {
   const notes = [
     {
       id: 1,
@@ -52,5 +52,45 @@ const RenderJS = () => {
     </div>
   );
 };
+
+export default RenderJS;
+*/
+
+//= forms 
+import Forms from './Forms'
+const RenderJS = ()=>{
+  const notas = [
+    {
+      id: 1,
+      conter: "html is easy",
+      date: "109-28-82",
+      state: true,
+      color: "blue",
+    },
+    {
+      id: 2,
+      conter: "browser is JavaScript",
+      date: "928-89-78",
+      state: true,
+    },
+    {
+      id: 3,
+      conter: "vue is beautiful and React to",
+      date: "13-849-89",
+      state: false,
+      color: "red",
+    },
+  ];
+  return (  
+      <div className="Render__form">
+        {
+          notas.map((note)=>{
+             return <Forms {...note} key={note.id} />
+
+          })
+        }
+      </div>
+  )
+}
 
 export default RenderJS;
