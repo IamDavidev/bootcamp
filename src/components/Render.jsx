@@ -73,7 +73,7 @@ const RenderJS = (props) => {
     const addNewNote = {
       
       id: notes.length + 1,
-      conter: newNote === "" ? "nota nueva sin contenido" : newNote,
+      conter: newNote === "" ? 'Sin titulo ' : newNote,
       date: new Date().toISOString(),
       state: true,
       color: "cyan",
@@ -90,15 +90,15 @@ const RenderJS = (props) => {
   return (
     <div className="Render__form">
       <div className="Form__new__note">
-        <form action="sublime text ++ carnage" onClick={handleSubmit}>
+        <form action="sublime text ++ carnage" >
           <input
             type="text"
             onChange={handleChange}
             value={newNote}
             placeholder={"add new note"}
-            aria-required={true}
+            required
           />
-          <button>Add Note </button>
+          <button onClick={handleSubmit}>Add Note </button>
         </form>
       </div>
       <div className="Render__">

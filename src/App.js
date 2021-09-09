@@ -1,8 +1,10 @@
 import "./App.css";
-import RenderJS from "./components/Render";
-import NavBar from './components/NavBar.jsx'
+
+// import RenderJS from "./components/Render";
+import NavBar from "./components/NavBar";
+import Fetch from './components/Fetch'
 const App = () => {
-  const notas = [
+/*  const notas = [
     {
       id: 1,
       conter: "html is easy",
@@ -23,14 +25,17 @@ const App = () => {
       state: false,
       color: "red",
     },
-  ];
+  ];*/
+
+
   return (
     <div className="App">
-      <div className="App-navbar" >
+      <div className="App-navbar">
         <NavBar />
-      </div>
+      </div>  
       <div className="App-header">
-        <RenderJS notes={notas}/>
+        <Fetch />
+        {/* <RenderJS notes={notas} /> */}
       </div>
     </div>
   );
