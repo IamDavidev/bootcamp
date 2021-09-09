@@ -1,6 +1,4 @@
-// import React, { useState } from "react";
 const Forms = (props) => {
-  // const [note, setNote] = useState();
   const { color, date, conter } = props;
   return (
     <div className="Forms__cotent">

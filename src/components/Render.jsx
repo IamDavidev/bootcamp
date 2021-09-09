@@ -71,6 +71,7 @@ const RenderJS = (props) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const addNewNote = {
+      
       id: notes.length + 1,
       conter: newNote === "" ? "nota nueva sin contenido" : newNote,
       date: new Date().toISOString(),
